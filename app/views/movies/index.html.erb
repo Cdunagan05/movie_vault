@@ -24,12 +24,23 @@
   </tr>
     <tbody id="movie-table-body">
     <% @movies.each do |movie| %>
-      <tr id= <%= movie.id %>>
-        <td class"movie-title"><%= movie.title %></td>
-        <td class"movie-note"><%= movie.note %></td>
-        <td class"status"><%= movie.watched %></td>
-        <td><button type="button" name="mark-as-watched" class="mark-watched">Mark as Watched</button></td>
-      </tr>
+      <% if movie.watched == false %>
+        <tr id= <%= movie.id %>>
+          <td class="movie-title"><%= movie.title %></td>
+          <td class="movie-note"><%= movie.note %></td>
+          <td class="status"><%= movie.watched %></td>
+          <td><button type="button" name="mark-as-watched" class="mark-watched">Mark as Watched</button></td>
+          <td><%= link_to "Edit Movie", edit_movie_path(movie.id) %></td>
+        </tr>
+        <% else %>
+        <tr class="grey" id= <%= movie.id %>>
+          <td class="movie-title"><%= movie.title %></td>
+          <td class="movie-note"><%= movie.note %></td>
+          <td class="status"><%= movie.watched %></td>
+          <td><button type="button" name="mark-as-unwatched" class="mark-unwatched">Mark as Unwatched</button></td>
+          <td><%= link_to "Edit Movie", edit_movie_path(movie.id) %></td>
+        </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

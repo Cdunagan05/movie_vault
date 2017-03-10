@@ -1,0 +1,8 @@
+<%= flash[:error] %>
+<h2> Edit your movie! </h2>
+
+<%= form_tag "/movies/#{@movie.id}", method: 'put' do %>
+    Title: <%= text_field_tag :title, @movie.title %>
+    Note: <%= text_field_tag :note, @movie.note %>
+    <%= submit_tag 'Update Movie' %>
+<% end %>

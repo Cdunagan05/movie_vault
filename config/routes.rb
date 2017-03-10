@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :movies, only: [:index, :create]
+  resources :movies, only: [:index, :create, :edit, :update]
 
   namespace :api do
     namespace :v1 do

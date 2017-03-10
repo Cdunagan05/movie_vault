@@ -13,10 +13,10 @@ $(document).ready(function(){
   function markUnwatched(movie) {
     $('#movie-table-body #' + movie.id +'').removeData();
     $('#movie-table-body #' + movie.id + ' .status').html(
-      "False"
+      "false"
     );
     $('#movie-table-body #' + movie.id + '').css('background', 'white');
-    $('#movie-table-body #' + movie.id + ' .mark-watched').html(
+    $('#movie-table-body #' + movie.id + ' .mark-unwatched').html(
       '<button type=button class="mark-watched">Mark as Watched</button>'
     );
   }

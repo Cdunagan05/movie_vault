@@ -13,7 +13,7 @@ $(document).ready(function(){
   function markWatched(movie) {
     $('#movie-table-body #' + movie.id +'').removeData();
     $('#movie-table-body #' + movie.id + ' .status').html(
-      "<td>True</td>"
+      "true"
     );
     $('#movie-table-body #' + movie.id + '').css('background', 'grey');
     $('#movie-table-body #' + movie.id + ' .mark-watched').html(
