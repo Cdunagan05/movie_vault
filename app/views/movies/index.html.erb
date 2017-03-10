@@ -1,6 +1,21 @@
 <% if current_user %>
   Welcome <%= current_user.email %><br>
   <%= link_to "Logout", logout_path, method: :delete %>
+
+<%= flash[:success] %>
+<%= flash[:notice] %>
+
+<h2>Create a movie here!!</h2>
+  <%= form_tag movies_path do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+
+    <%= label_tag :note %>
+    <%= text_field_tag :note %>
+
+    <%= submit_tag "Create Movie"%>
+  <% end %>
+
 <% else %>
   <h2><%= link_to "Sign Up", signup_path %> or <%= link_to "Login", login_path %></h2>
 <% end %>
