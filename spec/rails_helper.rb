@@ -7,6 +7,16 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 
+def stub_logged_in_user
+  user = User.create(email: 'cdun@gmail.com', password: 'texas')
+  visit '/'
+  click_on 'Login'
+  fill_in "email", :with => "cdun@gmail.com"
+  fill_in "password", :with => "texas"
+  click_on "Submit"
+  user.reload
+end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

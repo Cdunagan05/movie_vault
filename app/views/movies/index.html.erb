@@ -1,5 +1,6 @@
 <% if current_user %>
-  Welcome <%= current_user.email %>
+  Welcome <%= current_user.email %><br>
+  <%= link_to "Logout", logout_path, method: :delete %>
 <% else %>
   <h2><%= link_to "Sign Up", signup_path %> or <%= link_to "Login", login_path %></h2>
 <% end %>
