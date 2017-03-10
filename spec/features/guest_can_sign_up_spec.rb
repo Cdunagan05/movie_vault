@@ -11,7 +11,7 @@ RSpec.describe "guest can sign up" do
     fill_in "user_email", with: "chase@gmail.com"
     fill_in "user_password", with: "newkid"
     fill_in "user_password_confirmation", with: "newkid"
-    click_on "Submit"
+    click_on "Create User"
 
     expect(current_path).to eq(root_path)
     expect(User.all.first.email).to eq("chase@gmail.com")
