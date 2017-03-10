@@ -6,6 +6,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
+
 
 def stub_logged_in_user
   user = User.create(email: 'cdun@gmail.com', password: 'texas')
