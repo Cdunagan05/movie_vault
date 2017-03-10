@@ -22,13 +22,16 @@
     <th>Notes</th>
     <th>Seen?</th>
   </tr>
-  <% @movies.each do |movie| %>
-    <tr>
-      <td><%= movie.title %></td>
-      <td><%= movie.note %></td>
-      <td><%= movie.watched %></td>
-    </tr>
-    <% end %>
+    <tbody id="movie-table-body">
+    <% @movies.each do |movie| %>
+      <tr id= <%= movie.id %>>
+        <td class"movie-title"><%= movie.title %></td>
+        <td class"movie-note"><%= movie.note %></td>
+        <td class"status"><%= movie.watched %></td>
+        <td><button type="button" name="mark-as-watched" class="mark-watched">Mark as Watched</button></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 
 <% else %>

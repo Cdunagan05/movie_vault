@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :movies, only: [:index, :create]
+
+  namespace :api do
+    namespace :v1 do
+      resources :movies, only: [:update]
+    end
+  end
 end
