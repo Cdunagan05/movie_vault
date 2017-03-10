@@ -23,4 +23,26 @@ RSpec.describe "can edit movies" do
     expect(page).to have_content("Boom Boom Bog")
     expect(page).to have_content("Hello")
   end
+
+  scenario "User cannot edit movies without title" do
+    stub_logged_in_user
+
+    fill_in "Title", with: 'Cherry'
+    fill_in "Note", with: "Are good"
+    click_on "Create Movie"
+
+    expect(current_path).to eq(root_path)
+    expect(User.first.movies.count).to eq(1)
+
+    click_on "Edit Movie"
+
+    expect(current_path).to eq(edit_movie_path(User.first.movies.first[:id]))
+
+    fill_in "title", with: ""
+    fill_in "note", with: "Hello"
+    click_on "Update Movie"
+
+
+    expect(page).to have_content("There must be a title!")
+  end
 end

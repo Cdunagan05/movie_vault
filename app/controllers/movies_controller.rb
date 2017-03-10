@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     else
       error = movie.errors.messages.first[1][0]
       flash[:error] = possible_errors[error]
-      redirect_to edit_movie_path(link)
+      redirect_to edit_movie_path(movie)
     end
   end
 
