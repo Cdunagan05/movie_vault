@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   def index
-
+    if current_user != nil
+      @movies = current_user.movies.all
+    end
   end
 
   def create

@@ -16,6 +16,21 @@
     <%= submit_tag "Create Movie"%>
   <% end %>
 
+  <table>
+  <tr>
+    <th>Movie Title</th>
+    <th>Notes</th>
+    <th>Seen?</th>
+  </tr>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.note %></td>
+      <td><%= movie.watched %></td>
+    </tr>
+    <% end %>
+  </table>
+
 <% else %>
   <h2><%= link_to "Sign Up", signup_path %> or <%= link_to "Login", login_path %></h2>
 <% end %>

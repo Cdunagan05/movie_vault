@@ -10,6 +10,8 @@ RSpec.describe "When a logged in user goes to their movies index" do
     fill_in "Note", with: "This is my favorite movie"
     click_on "Create Movie"
 
+    save_and_open_page
+
     expect(user.movies.first.title).to eq("Shawshank Redemption")
     expect(user.movies.first.note).to eq("This is my favorite movie")
   end
