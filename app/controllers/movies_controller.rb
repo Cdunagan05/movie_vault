@@ -5,6 +5,22 @@ class MoviesController < ApplicationController
     end
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    movie = Movie.find(params[:id].to_i)
+    if movie.update(movie_params)
+      flash[:success] = "Update Successful!"
+      redirect_to root_path
+    else
+      error = movie.errors.messages.first[1][0]
+      flash[:error] = possible_errors[error]
+      redirect_to edit_movie_path(movie)
+    end
+  end
+
   def create
     movie = current_user.movies.create(movie_params)
     if movie.save
