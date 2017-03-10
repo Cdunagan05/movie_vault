@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe "user can login" do
   scenario "User logs in" do
-    user = User.create(email: "cd@gmail.com", password_digest: "newkid")
+    user = User.create(email: "cd@gmail.com", password: "newkid")
+
     visit "/"
     click_on "Login"
 
