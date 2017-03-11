@@ -4,5 +4,6 @@
 <%= form_tag "/movies/#{@movie.id}", method: 'put' do %>
     Title: <%= text_field_tag :title, @movie.title %>
     Note: <%= text_field_tag :note, @movie.note %>
+    Tags: <%= text_field_tag :tag_list, "Tags (separated by commas)" %>
     <%= submit_tag 'Update Movie' %>
 <% end %>

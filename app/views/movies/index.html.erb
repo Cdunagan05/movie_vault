@@ -28,6 +28,9 @@
     <th>Movie Title</th>
     <th>Notes</th>
     <th>Seen?</th>
+    <th>Tags</th>
+    <th>Watched?</th>
+    <th>Edit</th>
   </tr>
     <tbody id="movie-table-body">
     <% @movies.each do |movie| %>
@@ -36,6 +39,7 @@
           <td class="movie-title"><%= movie.title %></td>
           <td class="movie-note"><%= movie.note %></td>
           <td class="status"><%= movie.watched %></td>
+          <td class="tags"><%= raw movie.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
           <td><button type="button" name="mark-as-watched" class="mark-watched">Mark as Watched</button></td>
           <td><%= link_to "Edit Movie", edit_movie_path(movie.id) %></td>
         </tr>
@@ -44,6 +48,7 @@
           <td class="movie-title"><%= movie.title %></td>
           <td class="movie-note"><%= movie.note %></td>
           <td class="status"><%= movie.watched %></td>
+          <td class="tags"><%= raw movie.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
           <td><button type="button" name="mark-as-unwatched" class="mark-unwatched">Mark as Unwatched</button></td>
           <td><%= link_to "Edit Movie", edit_movie_path(movie.id) %></td>
         </tr>

@@ -1,7 +1,11 @@
 class MoviesController < ApplicationController
   def index
     if current_user != nil
-      @movies = current_user.movies.all
+      @movies = if params[:tag]
+        Movie.tagged_with(params[:tag])
+      else
+        @movies = current_user.movies.all
+      end
     end
   end
 
@@ -36,7 +40,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.permit(:title, :note)
+    params.permit(:title, :note, :tag_list)
   end
 
   def possible_errors
