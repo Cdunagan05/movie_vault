@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'movies#index'
+  get 'tags/:tag', to: 'movies#index', as: :tag
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
