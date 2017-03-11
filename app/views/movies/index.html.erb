@@ -1,6 +1,6 @@
 <% if current_user %>
   Welcome <%= current_user.email %><br>
-  <%= link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "Logout", logout_path, method: "delete" %>
 
 <%= flash[:success] %>
 <%= flash[:notice] %>
@@ -15,6 +15,13 @@
 
     <%= submit_tag "Create Movie"%>
   <% end %>
+
+  <div>
+    Filter by title: <input id="filter-input">
+    <button id='filter-by-watched'>Show only my Watched</button>
+    <button id='filter-by-unwatched'>Show only my UNwatched</button>
+    <button id='sort-alpha'>Sort Alphabetically by Title</button>
+  </div>
 
   <table>
   <tr>
