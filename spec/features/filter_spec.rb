@@ -2,17 +2,18 @@ require "rails_helper"
 
 RSpec.describe "can filter movies", :js => :true do
   scenario "Can filter movies by buttons" do
-    stub_logged_in_user
+    user = User.create(email: 'matt@gmail.com', password: 'texas')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    movie_1 = Movie.create(title: 'Shawshank', user_id: user.id)
 
-    fill_in "Title", with: "Shawshank Redemption"
-    fill_in "Note", with: "This is my most favorite movie"
-    click_on "Create Movie"
 
-    fill_in "Title", with: "Bu"
-    fill_in "Note", with: "This is my least favorite movie"
-    click_on "Create Movie"
+    visit '/'
+    visit '/'
 
-    first('.item').click_on('Mark as Watched')
+    byebug
+
+   save_and_open_page
+    click_on('Mark as Watched')
 
     expect(page).to have_content("true")
   end
