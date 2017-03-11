@@ -10,9 +10,6 @@ RSpec.describe "can filter movies", :js => :true do
     visit '/'
     visit '/'
 
-    byebug
-
-   save_and_open_page
     click_on('Mark as Watched')
 
     expect(page).to have_content("true")
